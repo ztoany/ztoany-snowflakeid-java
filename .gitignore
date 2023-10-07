@@ -1,0 +1,7 @@
+.idea
+build
+target
+*.iml
+.gradle
+LOG_HOME_IS_UNDEFINED
+.DS_Store
