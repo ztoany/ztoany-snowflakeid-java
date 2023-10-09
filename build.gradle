@@ -1,6 +1,8 @@
+import com.vanniktech.maven.publish.SonatypeHost
+
 plugins {
     id 'java-library'
-    id 'maven-publish'
+    id "com.vanniktech.maven.publish" version "0.25.3"
 }
 
 group 'io.github.ztoany.infra'
@@ -26,18 +28,35 @@ java {
     //withJavadocJar()
 }
 
-publishing {
-    publications {
-        mavenJar(MavenPublication) {
-            from components.java
-            versionMapping {
-                usage('java-api') {
-                    fromResolutionOf('runtimeClasspath')
-                }
-                usage('java-runtime') {
-                    fromResolutionResult()
-                }
+mavenPublishing {
+    pom {
+        name = 'ztoany-snowflakeid-java'
+        description = 'An implementation of twitter snowflake id'
+        url = 'https://github.com/ztoany/ztoany-snowflakeid-java'
+        licenses {
+            license {
+                name = 'The Apache License, Version 2.0'
+                url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
             }
         }
+        developers {
+            developer {
+                id = 'ztoany'
+                name = 'ztoany'
+                email = 'marvin.m.huang@outlook.com'
+            }
+        }
+        scm {
+            connection = 'scm:git:git://github.com/ztoany/ztoany-snowflakeid-java.git'
+            developerConnection = 'scm:git:ssh://github.com:ztoany/ztoany-snowflakeid-java.git'
+            url = 'https://github.com/ztoany/ztoany-snowflakeid-java/'
+        }
     }
+
+    // publishToMavenCentral(SonatypeHost.DEFAULT)
+    // or when publishing to https://s01.oss.sonatype.org
+    publishToMavenCentral(SonatypeHost.S01)
+
+    signAllPublications()
 }
+

@@ -2,10 +2,18 @@
 
 An implementation of twitter snowflake id
 
-## build
+## usage
+
+gradle
+
+```
+implementation group: 'io.github.ztoany.infra', name: 'ztoany-snowflakeid-java', version: '0.0.1'
+```
+
+## publish
 
 publish to maven local
 
-```
-gradle publishMavenJarPublicationToMavenLocal
+```shell
+gradle publishToMavenLocal
 ```
