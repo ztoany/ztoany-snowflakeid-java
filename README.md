@@ -17,3 +17,9 @@ publish to maven local
 ```shell
 gradle publishToMavenLocal
 ```
+
+publish to central portal
+
+```shell
+gradle publishAndReleaseToMavenCentral --no-configuration-cache
+```
