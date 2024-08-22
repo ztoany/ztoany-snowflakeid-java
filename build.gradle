@@ -2,20 +2,25 @@ import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
     id 'java-library'
-    id "com.vanniktech.maven.publish" version "0.25.3"
+    id "com.vanniktech.maven.publish" version "0.29.0"
 }
 
 group 'io.github.ztoany.infra'
-version '0.0.1'
-sourceCompatibility = '17'
+version '0.1.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
 test {
@@ -53,9 +58,11 @@ mavenPublishing {
         }
     }
 
-    // publishToMavenCentral(SonatypeHost.DEFAULT)
+    publishToMavenCentral(SonatypeHost.DEFAULT)
     // or when publishing to https://s01.oss.sonatype.org
     publishToMavenCentral(SonatypeHost.S01)
+    // or when publishing to https://central.sonatype.com/
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
 
     signAllPublications()
 }
