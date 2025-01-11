@@ -7,7 +7,7 @@ An implementation of twitter snowflake id
 gradle
 
 ```
-implementation group: 'io.github.ztoany.infra', name: 'ztoany-snowflakeid-java', version: '0.0.1'
+implementation group: 'io.github.ztoany.infra', name: 'ztoany-snowflakeid-java', version: '0.1.1'
 ```
 
 ## publish
@@ -16,4 +16,10 @@ publish to maven local
 
 ```shell
 gradle publishToMavenLocal
+```
+
+publish to central portal
+
+```shell
+gradle publishAndReleaseToMavenCentral --no-configuration-cache
 ```
